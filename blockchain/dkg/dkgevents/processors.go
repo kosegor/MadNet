@@ -84,7 +84,7 @@ func ProcessRegistrationOpened(eth interfaces.Ethereum, logger *logrus.Entry, st
 	}).Infof("Purging Schedule")
 	state.Schedule.Purge()
 
-	if !state.EthDKG.IsValidator {
+	if !state.EthDKG.isValidator {
 		return nil
 	}
 
@@ -118,7 +118,7 @@ func UpdateStateOnRegistrationOpened(account accounts.Account, startBlock, phase
 		nonce,
 	)
 
-	dkgState.IsValidator = amIValidator
+	dkgState.isValidator = amIValidator
 	dkgState.ValidatorAddresses = validatorAddresses
 	dkgState.NumberOfValidators = len(validatorAddresses)
 
@@ -160,7 +160,7 @@ func ProcessRegistrationComplete(eth interfaces.Ethereum, logger *logrus.Entry, 
 
 	logger.Info("ProcessRegistrationComplete() ...")
 
-	if !state.EthDKG.IsValidator {
+	if !state.EthDKG.isValidator {
 		return nil
 	}
 
@@ -257,7 +257,7 @@ func ProcessShareDistributionComplete(eth interfaces.Ethereum, logger *logrus.En
 
 	logger.Info("ProcessShareDistributionComplete() ...")
 
-	if !state.EthDKG.IsValidator {
+	if !state.EthDKG.isValidator {
 		return nil
 	}
 
@@ -369,7 +369,7 @@ func ProcessKeyShareSubmissionComplete(eth interfaces.Ethereum, logger *logrus.E
 		"BlockNumber": event.BlockNumber,
 	}).Info("ProcessKeyShareSubmissionComplete() ...")
 
-	if !state.EthDKG.IsValidator {
+	if !state.EthDKG.isValidator {
 		return nil
 	}
 
@@ -418,7 +418,7 @@ func ProcessMPKSet(eth interfaces.Ethereum, logger *logrus.Entry, state *objects
 		"MPK":         event.Mpk,
 	}).Info("ProcessMPKSet() ...")
 
-	if !state.EthDKG.IsValidator {
+	if !state.EthDKG.isValidator {
 		return nil
 	}
 
@@ -490,7 +490,7 @@ func ProcessGPKJSubmissionComplete(eth interfaces.Ethereum, logger *logrus.Entry
 		"BlockNumber": event.BlockNumber,
 	}).Info("ProcessGPKJSubmissionComplete() ...")
 
-	if !state.EthDKG.IsValidator {
+	if !state.EthDKG.isValidator {
 		return nil
 	}
 

@@ -23,7 +23,7 @@ func ProcessDepositReceived(eth interfaces.Ethereum, logger *logrus.Entry, state
 
 	logger.Info("ProcessDepositReceived() ...")
 
-	if !state.EthDKG.IsValidator {
+	if !state.EthDKG.isValidator {
 		return nil
 	}
 
@@ -70,7 +70,7 @@ func ProcessValueUpdated(eth interfaces.Ethereum, logger *logrus.Entry, state *o
 
 	logger.Info("ProcessValueUpdated() ...")
 
-	if !state.EthDKG.IsValidator {
+	if !state.EthDKG.isValidator {
 		return nil
 	}
 
