@@ -562,7 +562,6 @@ func (state *DkgState) GetSortedParticipants() ParticipantList {
 	defer state.RUnlock()
 
 	var list = make(ParticipantList, len(state.participants))
-
 	for _, p := range state.participants {
 		list[p.Index-1] = p.Clone()
 	}
